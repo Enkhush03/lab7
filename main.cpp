@@ -68,13 +68,41 @@ public:
         cout << "Area: " << area << ", Perimeter: " << perimeter << endl;
     }
 };
+class circle: public TwoDShape {
+private:
+float x_center;
+float y_center;
+public:
+circle(float x, float y, float radius, string n="Circle"): TwoDShape(n, radius){
+    x_center=x;
+    y_center=y;
+    calcArea();
+    calcPerimeter();
+}
+void calcArea(){
+    area= M_PI * r * r;
+}
+void calcPerimeter(){
+    perimeter= 2 * M_PI * r;
+}
+void print(){
+    cout<<"Shape: "<<name<<endl;
+    cout<<"Center: ("<<x_center<<", "<<y_center<<")"<<endl;
+    cout<<"Area: "<<area<<", Perimeter: "<<perimeter<<endl;
+}
+
+};
 
 
 
-//circle nomio
+
 //square shagai
 
 int main(){
 Triangle t1(0, 0, 6, "Equilateral Triangle");
     t1.print();
+    circle c1(0, 0, 5, "Circle");
+    c1.print();
 }
+
+
