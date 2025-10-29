@@ -100,7 +100,7 @@ void print(){
 //square shagai
 
 int main(){
- 
+ //нэгэн төрлийн классуудыг нэг эх класст объектод нь хийгээд дотор нь эрэмбэлсэн.
     TwoDShape *p[10];
     p[0] = new Circle(0,0,3,"Circle1");
     p[1] = new Triangle(1,1,4,"Triangle1");
