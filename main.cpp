@@ -70,12 +70,12 @@ public:
         cout << "Area: " << area << ", Perimeter: " << perimeter << endl;
     }
 };
-class circle: public TwoDShape {
+class Circle: public TwoDShape {
 private:
 float x_center;
 float y_center;
 public:
-circle(float x, float y, float radius, string n="Circle"): TwoDShape(n, radius){
+Circle(float x, float y, float radius, string n="Circle"): TwoDShape(n, radius){
     x_center=x;
     y_center=y;
     calcArea();
@@ -123,35 +123,34 @@ public:
 //square shagai
 
 int main(){
-    Triangle* t1= new Triangle(0, 0, 4);
-    circle* c1= new circle(1, 1, 3);
-    Square* s1= new Square(-1, 1, 2);  
-    Triangle* t2= new Triangle(2, 2, 5, "MyTriangle");
-    circle* c2= new circle(0, 0, 1, "MyCircle");
-    Square* s2= new Square(3, 3, 4, "MySquare");
-    TwoDShape* shapes[6]={t1, c1, s1, t2, c2, s2};
-    auto swap=[](TwoDShape*& a, TwoDShape*& b){
-        TwoDShape* temp=a;
-        a=b;
-        b=temp; 
-    };
-    for(int i=0; i<6-1; i++){
-        for(int j=0; j<6-i-1; j++){
-            if(shapes[j]->getArea() > shapes[j+1]->getArea()){
-                swap(shapes[j], shapes[j+1]);
+ 
+    TwoDShape *p[10];
+    p[0] = new Circle(0,0,3,"Circle1");
+    p[1] = new Triangle(1,1,4,"Triangle1");
+    p[2] = new Square(2,2,2,"Square1");
+    p[3] = new Circle(1,2,5,"Circle2");
+    p[4] = new Triangle(0,0,3,"Triangle2");
+    p[5] = new Square(-1,1,4,"Square2");
+    p[6] = new Circle(1,3,4, "Circle3");
+    p[7] = new Triangle(1,4,5,"Triangle3");
+    p[8] = new Square(1,0,1, "Square3");
+    int n=9;
+    for(int i=0; i<n-1; i++){
+        for(int j=0; j<n-i-1; j++){
+            if(p[j]->getArea()>p[j+1]->getArea()){
+                TwoDShape *t=p[j];
+                p[j]=p[j+1];
+                p[j+1]=t;
+
             }
         }
     }
-    for(int i=0; i<6; i++){
-        shapes[i]->print();
+    for(int i=0; i<n; i++){
+        p[i]->print();
         cout<<endl;
     }
-    for(int i=0; i<6; i++){
-        delete shapes[i];
-            return 0;
-    }
-    
-  
+    for(int i=0; i<n; i++)
+ delete p[i];  
 
 }
 
