@@ -94,11 +94,28 @@ void print(){
 }
 
 };
-
-
-
 //square shagai
-
+class Square : public TwoDShape {
+private:
+    float x, y; // Зүүн дээд оройн координат
+public:
+    Square(float x0, float y0, float side, string n = "Square")
+        : TwoDShape(n, side), x(x0), y(y0) {
+        calcArea();
+        calcPerimeter();
+    }
+    void calcArea() {
+        area = r * r; // r-г эх классаас авна
+    }
+    void calcPerimeter() {
+        perimeter = 4 * r;
+    }
+    void print() override {
+        cout << "Shape: " << name << endl;
+        cout << "Top-left corner: (" << x << ", " << y << ")" << endl;
+        cout << "Area: " << area << ", Perimeter: " << perimeter << endl;
+    }
+};
 int main(){
  //нэгэн төрлийн классуудыг нэг эх класст объектод нь хийгээд дотор нь эрэмбэлсэн.
     TwoDShape *p[10];
