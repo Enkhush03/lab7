@@ -94,30 +94,7 @@ void print(){
 }
 
 };
-class Square: public TwoDShape {
-private: 
-    float x1;
-    float y1;
-public:
-    Square(float x, float y, float side, string n="Square"): 
-    TwoDShape(n, side){
-        x1=x;
-        y1=y;
-        calcArea();
-        calcPerimeter();
-}
-    void calcArea(){
-        area= r * r;
-    }
-    void calcPerimeter(){
-        perimeter= 4 * r;
-    }
-    void print(){
-        cout<<"Shape: "<<name<<endl;
-        cout<<"Top-left corner: ("<<x1<<", "<<y1<<")"<<endl;
-        cout<<"Area: "<<area<<", Perimeter: "<<perimeter<<endl;
-    }
-};
+
 
 
 //square shagai
