@@ -1,3 +1,4 @@
+```mermaid
 classDiagram
     class Shape {
         - string name
@@ -10,8 +11,8 @@ classDiagram
     }
 
     class TwoDShape {
-        - float area
-        - float perimeter
+        # float area
+        # float perimeter
         + TwoDShape(string n="2D Shape", float rr=0)
         + float getArea()
         + float getPerimeter()
@@ -52,4 +53,3 @@ classDiagram
     Circle --|> TwoDShape
     Triangle --|> TwoDShape
     Square --|> TwoDShape
-
