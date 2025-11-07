@@ -4,17 +4,27 @@ using namespace std;
 class Shape{
     protected:
     string name;
+    static int number;
     float r; //taliin urt, radius buguud busad dursed udamshina
     public:
      Shape(string n = "Shape", float rr=0) {
         name = n;
         r=rr;
+        number++;
     }
     void setName(string n) { name = n; }
     string getName() { return name; }
     void setR(float rr){ r=rr;}
     float getR(){ return r;}
+    static int getnumber(){return number;}
+    static int setnumber(int n){number =n;}
+    ~Shape(){
+        number--;
+    }
+
 };
+int Shape::number=0;
+
 class TwoDShape : public Shape {
 public:
     virtual  float area()=0;
@@ -91,6 +101,7 @@ public:
 
 int main(){
  //нэгэн төрлийн классуудыг нэг эх класст объектод нь хийгээд дотор нь эрэмбэлсэн.
+    Shape::setnumber(0);
     TwoDShape *p[10];
     p[0] = new Circle(0,0,3,"Circle1");
     p[1] = new Triangle(1,1,4,"Triangle1");
@@ -101,6 +112,7 @@ int main(){
     p[6] = new Circle(1,3,4, "Circle3");
     p[7] = new Triangle(1,4,5,"Triangle3");
     p[8] = new Square(1,0,1, "Square3");
+    cout<<"Niit uussen object:"<<Shape::getnumber()<<endl;
     int n=9;
     for(int i=0; i<n-1; i++){
         for(int j=0; j<n-i-1; j++){
