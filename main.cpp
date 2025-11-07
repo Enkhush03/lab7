@@ -8,14 +8,14 @@ class Shape{
     float r; //taliin urt, radius buguud busad dursed udamshina
     public:
      Shape(string n = "Shape", float rr=0) {
-        name = n;
-        r=rr;
+        this->name = n;
+        this->r=rr;
         number++;
     }
-    void setName(string n) { name = n; }
-    string getName() { return name; }
-    void setR(float rr){ r=rr;}
-    float getR(){ return r;}
+    void setName(string n) { this->name = n; }
+    string getName() { return this->name; }
+    void setR(float rr){ this->r=rr;}
+    float getR(){ return this->r;}
     static int getnumber(){return number;}
     static int setnumber(int n){number =n;}
     ~Shape(){
@@ -44,23 +44,23 @@ private:
 public:
     Triangle(float x, float y, float side, string n = "Triangle") 
         : TwoDShape(n, side) {
-        x1 = x; y1 = y;
+        this->x1 = x; this->y1 = y;
         Vertices();
     }
 
     void Vertices() {
-        float h = (sqrt(3)/2) * r;
-        x2 = x1 - r/2; y2 = y1 - h;
-        x3 = x1 + r/2; y3 = y1 - h;
+        float h = (sqrt(3)/2) * this->r;
+        this->x2 = this->x1 - this->r/2; this->y2 = this->y1 - h;
+        this->x3 = this->x1 + this->r/2; this->y3 = this->y1 - h;
     }
 
-    float area() override { return (sqrt(3)/4) * pow(r, 2); }
-    float perimeter() override { return 3*r; }
+    float area() override { return (sqrt(3)/4) * pow(this->r, 2); }
+    float perimeter() override { return 3*this->r; }
 
     void print() override {
-        cout << "Shape: " << name << endl;
-        cout << "Vertices: A(" << x1 << "," << y1 << ") B(" << x2 << "," << y2 << ") C(" << x3 << "," << y3 << ")" << endl;
-        cout << "Area: " << area() << ", Perimeter: " << perimeter() << endl;
+        cout << "Shape: " << this->name << endl;
+        cout << "Vertices: A(" << this->x1 << "," << this->y1 << ") B(" << this->x2 << "," << this->y2 << ") C(" << this->x3 << "," << this->y3 << ")" << endl;
+        cout << "Area: " << this->area() << ", Perimeter: " << this->perimeter() << endl;
     }
 };
 
@@ -69,16 +69,16 @@ private:
     float x_center, y_center;
 public:
     Circle(float x, float y, float radius, string n="Circle"): TwoDShape(n, radius) {
-        x_center=x; y_center=y;
+        this->x_center=x; this->y_center=y;
     }
 
-    float area() override { return M_PI*r*r; }
-    float perimeter() override { return 2*M_PI*r; }
+    float area() override { return M_PI*this->r*this->r; }
+    float perimeter() override { return 2*M_PI*this->r; }
 
     void print() override {
-        cout<<"Shape: "<<name<<endl;
-        cout<<"Center: ("<<x_center<<", "<<y_center<<")"<<endl;
-        cout<<"Area: "<<area()<<", Perimeter: "<<perimeter()<<endl;
+        cout<<"Shape: "<<this->name<<endl;
+        cout<<"Center: ("<<this->x_center<<", "<<this->y_center<<")"<<endl;
+        cout<<"Area: "<<this->area()<<", Perimeter: "<<this->perimeter()<<endl;
     }
 };
 
@@ -87,15 +87,15 @@ class Square : public TwoDShape {
 private:
     float x, y; // Зүүн дээд оройн координат
 public:
-    Square(float x0, float y0, float side, string n = "Square") : TwoDShape(n, side), x(x0), y(y0) {}
+    Square(float x0, float y0, float side, string n = "Square") : TwoDShape(n, side), this->x(x0), this->y(y0) {}
 
-    float area() override { return r*r; }
-    float perimeter() override { return 4*r; }
+    float area() override { return this->r*this->r; }
+    float perimeter() override { return 4*this->r; }
 
     void print() override {
-        cout << "Shape: " << name << endl;
-        cout << "Top-left corner: (" << x << "," << y << ")" << endl;
-        cout << "Area: " << area() << ", Perimeter: " << perimeter() << endl;
+        cout << "Shape: " << this->name << endl;
+        cout << "Top-left corner: (" << this->x << "," << this->y << ")" << endl;
+        cout << "Area: " << this->area() << ", Perimeter: " << this->perimeter() << endl;
     }
 };
 
